@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>requestAnimationFrame</title>
+    <style>
+        canvas {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="canvas" width="600" height="400">이 브라우저는 캔버스를 지원 않함</canvas>
+
+
+
+
+    <script>
+
+        const canvas = document.querySelector('.canvas');
+        const context = canvas.getContext('2d');
+        let xPos = 10;
+        let timeId;
+
+
+        function draw() {
+            // 그리자마자 지워서 공이 날라가는 애니메이션 처럼 보임
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // beginPath 빼먹지 말자 !
+            context.beginPath();
+
+            context.arc(xPos, 150, 10, 0, Math.PI * 2,false);
+            context.fill();
+            xPos += 1;
+
+            // 애니메이션 정지시키기, 10은 원의 반지름 
+            // if (xPos >= canvas.width - 10) {
+            //     return;
+            // }
+
+            // 그림을 그릴때 그리기 최적화된 상태로 준비한다???
+            // draw함수를 넣어서 recursion실행 -> 원을 그리는걸 위치를 아주 조금씩 움직여서 애니메이션 효과를 냄
+            // 1초당 60번 반복함
+            timeId = requestAnimationFrame(draw);
+            // console.log(timeId); //숫자가 1씩 올라감
+
+            if(xPos >= canvas.width-10){
+                cancelAnimationFrame(timeId);
+            }
+        }
+
+        draw();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas2</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .canvas {
+            width: 500px;
+            height: 300px;
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>캔버스 사이즈 설정</h1>
+    <!-- canvas사이즈를 css에서 설정하는 거랑 html에서 설정하는 것이 차이가 있음
+    뭐가? 캔버스안에 원을 보면 차이를 알 꺼임 canvas, canvas2 모두 같은 크기의 원을 그렸지만 다르게 보임
+    근데 canvas 1000, 600으로 설정하고 css로 절반으로 설정해주면 좋음 why? 고해상도로 표현이 가능
+    canvas를 화면 full로 사용할려면 js로 width, height를 2배로 하고 css로 반으로 줄이면됨
+    canvas를 2배해서 css로 조절하는게 좋지만 연산할게 많아지고 그 만큼 성능이 떨어짐 근데 고해상도로 보임 그래서 적절하게 사용하는게 중요
+     -->
+    <canvas class="canvas" width="500" height="300"></canvas>
+    <canvas class="canvas canvas2" width="1000" height="600"></canvas>
+
+
+    <script>
+        const canvas = document.querySelector('canvas');
+        const canvas2 = document.querySelector('.canvas2');
+        const context = canvas.getContext('2d');
+        const context2 = canvas2.getContext('2d');
+
+        context.arc(100, 100, 50, 0, Math.PI * 2, false);
+        context2.arc(100, 100, 50, 0, Math.PI * 2, false);
+        context.fill();
+        context2.fill();
+    </script>
+
+</body>
+
+</html>

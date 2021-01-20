@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- canvas는 크기가 커지면 용량도 커짐 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <script src="modernizr.js"></script>
+</head>
+
+<body>
+    <canvas>이 브라우저는 캔버스를 지원 안함</canvas>
+
+    <script>
+        // canvas 지원 여부
+        if (Modernizr.canvas) {
+            // console.log('canvas를 지원하는 브라우저');
+        }
+
+        const canvas = document.querySelector("canvas");
+        if(canvas.getContext){
+            console.log("캔버스 지원");
+        }
+    </script>
+
+
+</body>
+
+</html>

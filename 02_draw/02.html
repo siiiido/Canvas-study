@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2</title>
+    <style>
+        canvas {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas class="canvas" width="600" height="400">브라우저는 캔버스 지원 x</canvas>
+
+    <script>
+
+        // beginPath
+        // moveTo
+        // lineTo
+        // closePath
+        const canvas = document.querySelector('canvas');
+        const context = canvas.getContext('2d');
+
+        // beginPath : 호출하면서 선의 시작을 알려주는게 좋음
+        context.beginPath();
+        // moveTo : 그리는게 아니고 붓을 그 위치로 옮긴다
+        context.moveTo(100, 100);
+        // lineTo : 선을 만드는건데 보이진 않음 why? stroke메소드 실행해줘야 선이 보임
+        // 즉 moveTo, lineTo로 위치과 path를 정하고  stroke나 fill로 색 칠하거나 선을 그음
+        context.lineTo(300, 200);
+        context.stroke();
+        // path가 끝나면 close해주는것
+        context.closePath();
+        // context.fill();
+
+    </script>
+
+</body>
+
+</html>

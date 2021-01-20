@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3</title>
+    <style>
+        canvas {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas class="canvas" width="600" height="400">브라우저는 캔버스 지원 x</canvas>
+
+    <script>
+        function 라디안(각도) {
+            return 각도 * Math.PI / 180;
+        }
+
+        // 원 그리기
+        // beginPath
+        // arc
+        // closePath
+        const canvas = document.querySelector('canvas');
+        const context = canvas.getContext('2d');
+
+        context.beginPath();
+        // arc : 호 그리는것 근데 360돌리면 원이됨
+        // arc(중심점이 300,200, 반지름=50, 몇도로 그릴껀지 시작도 = 0, 끝 각도=360)
+        // 360도 2파이, 1도는 파이/180  즉 라디안 각도로 해야함 -> 라디안 함수를 사용해야한다!
+        // 그림을 그을때 시계방향으로 그릴껀지 반시계 방향으로 그릴껀지, 원 그리는거라 상관없어서 아무거나 넣어도됨, 원 아닌것은 true넣고 false넣고 비교해보면 쉽게 알 수 있음`
+        context.arc(300, 200, 50, 0, 라디안(360), false);
+        context.stroke(); //선 긋기
+        // context.fill();
+
+        // beginPath 해주면 다시 시작하는 거라 안 해주면 한 붓그리기가 됨, 도형 그리는 것마다 해주는것이 좋음 
+        context.beginPath();
+        context.arc(500, 100, 20, 0, 라디안(360), false);
+        context.stroke();
+    </script>
+
+
+</body>
+
+</html>
+가호!

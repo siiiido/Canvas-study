@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setInterval</title>
+    <style>
+        canvas {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas class="canvas" width="600" height="400">이 브라우저는 캔버스를 지원 않함</canvas>
+
+
+
+
+    <script>
+
+        // setInterval로 애니메이션 효과내기!!!
+
+        // requestAnimationFrame로도 setInterval효과를 줄 수 있다!
+        const canvas = document.querySelector('.canvas');
+        const context = canvas.getContext('2d');
+        let xPos = 10;
+        let count = 0;
+        function draw() {
+
+            if (count % 30 === 0) {
+                // 그리자마자 지워서 공이 날라가는 애니메이션 처럼 보임
+                context.clearRect(0, 0, canvas.width, canvas.height);
+
+                // beginPath 빼먹지 말자 !
+                context.beginPath();
+                context.arc(xPos, 150, 10, 0, Math.PI * 2, false);
+                context.fill();
+                xPos += 5;
+            }
+            count++;
+            requestAnimationFrame(draw);
+        }
+        // setInterval VS requestAnimationFrame -> 최적화될 때까지 기다려주고 이런 장점들이 있음
+        // setInterval(draw, 500);
+        draw();
+    </script>
+
+</body>
+
+</html>
