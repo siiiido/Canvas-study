@@ -33,7 +33,7 @@
             // beginPath 빼먹지 말자 !
             context.beginPath();
 
-            context.arc(xPos, 150, 10, 0, Math.PI * 2,false);
+            context.arc(xPos, 150, 10, 0, Math.PI * 2, false);
             context.fill();
             xPos += 1;
 
@@ -48,12 +48,19 @@
             timeId = requestAnimationFrame(draw);
             // console.log(timeId); //숫자가 1씩 올라감
 
-            if(xPos >= canvas.width-10){
+            if (xPos >= canvas.width - 10) {
+                // 공이 캔버스 화면에 도착하면 멈추도록함
                 cancelAnimationFrame(timeId);
             }
         }
 
         draw();
+
+        // 애니메이션 클릭할 때 멈추게 함
+        canvas.addEventListener('click', () => {
+            cancelAnimationFrame(timeId);
+        });
+        
     </script>
 
 </body>

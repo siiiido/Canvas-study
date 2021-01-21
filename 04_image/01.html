@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image</title>
+    <style>
+        .canvas {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>image</h1>
+    <canvas class="canvas" width="600" height="400">이 브라우저는 캔버스 지원 x</canvas>
+
+    <script>
+        const canvas = document.querySelector('.canvas');
+        const context = canvas.getContext('2d');
+
+        // 이미지는 js에 이미지 객체를 만든다음 캔버스에서 불러오면됨
+        // 이미지 객체를 만들면 메모리상에 이미지가 만들어짐
+
+        // 이미지 객체 만드는 법 1
+        // const imgElem = document.createElement('img');
+
+        // 이미지 객체 만드는 법 2
+        const imgElem = new Image();
+        imgElem.src = '../images/ilbuni_1.png';
+
+        // 이미지가 src에서(외부 데이터)에서 받아올라면 이미지가 load되는걸 기다려야함
+        imgElem.addEventListener('load', () => {
+            // 괄호 안에 객체, 가로, 세로, 원하는width, 원하는heigth
+            context.drawImage(imgElem,50, 50)
+            context.drawImage(imgElem,50, 50, 70, 120);
+
+            // 원하는 이미지만 캡쳐 가능
+            context.drawImage(imgElem,300, 300, 200, 200, 0, 0, 100,100);
+        });
+
+    </script>
+</body>
+
+</html>
